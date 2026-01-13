@@ -19,3 +19,24 @@ header {
     padding: 20px;
     margin-bottom: auto;
 }
+
+#orderButton {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+
+
+}
+header img {
+    
+    height: auto;
+    border-radius: 10px;
+    float: right;
+    margin: 0 auto 1rem auto;
+    width: 120px;
+    border: black solid 3px;
+    
+}
