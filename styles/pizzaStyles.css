@@ -60,3 +60,11 @@ labels{
     padding-bottom: .2rem;
 
 }
+input[type = "text"] {
+    width: 90%;
+    border: 2px solid rgb(62, 59, 59);
+    border-radius: .25rem;
+    margin-bottom: 1.5rem;
+    padding: .75rem;
+
+}

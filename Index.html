@@ -45,15 +45,50 @@
     
             <fieldset>
                 <legend>Select Size of Pizza</legend>
+                <select>
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                </select>
                 
             </fieldset>
+
+            
 
             <fieldset>
                 <legend>Select Toppings</legend>
+                <label for ="pepperoni">Pepperoni</label>
+                <input type = "checkbox" id = "pepperoni" name = "toppings" value = "pepperoni">
+                <br>
+                <label for ="mushrooms">Mushrooms</label>
+                <input type = "checkbox" id = "mushrooms" name = "toppings" value = "mushrooms">
+                <br>
+                <label for ="olives">Olives</label>
+                <input type = "checkbox" id = "olives" name = "toppings" value = "olives">
+                <br>
+                <label for ="onions">Onions</label>
+                <input type = "checkbox" id = "onions" name = "toppings" value = "onions">
+                <br>
+                <label for ="chickens">Chicken</label>
+                <input type = "checkbox" id = "chickens" name = "toppings" value = "chickens">
+
                 
+
+
+            </fieldset>
+            
+            <fieldset>
+                <legend>Discount sign up!</legend>
+                <label for = "sign me up for discounts" > sign me up for discounts</label>
+                <input type = "checkbox" id = "discounts" name = "discounts" value = "discounts">
             </fieldset>
 
-            <button type = "submit"> Place order</button>
+            <label for="comment">Special Instructions:</label>
+            <textarea rows="5" id = "comment" name = "comment"></textarea>
+
+            
+
+            <button type = "submit" id = "placeOrderButton"> Place order</button>
         </form>
         </main>
 </body>
