@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="icon" href="imgs/Pizza.png">
+    <favicon href="imgs/Pizza.png">
     <link rel="stylesheet" href="styles/pizzaStyles.css">
+    <script src="pizza.js" defer></script>
 </head>
 <body>
     <main>
@@ -24,18 +26,33 @@
              <fieldset>
                 
              <legend>Contact Information</legend>
-            <label for="fname">First Name:</label>
-            <input type = "text"id = "fname" name = "fname" required>
-            <label for = "email">Email:</label>
-            <input type = "email" id = "email" name = "email" required>
+            <label for="fname">First Name:
+                <span class="err" id = "err-fname">
+                    First name is required
+                </span>
+            </label>
+            <input type = "text"id = "fname" name = "fname" >
+            <label for = "email">Email:
+                <span class="err" id = "err-email">
+                    Valid email is required
+                </span>
+            </label>
+            <input type = "email" id = "email" name = "email" >
             <br>
-            <label for="fname">Last Name:</label>
-            <input type = "text"id = "lname" name = "lname" required>
+            <label for="fname">Last Name: 
+                <span class="err" id = "err-lname">
+                    Last name is required
+                </span>
+            </label>
+            <input type = "text"id = "lname" name = "lname" >
             </fieldset>
 
 
             <fieldset>
                 <legend>Select Pick up or Delivery</legend>
+                <span class="err" id = "err-method">
+                    Please select a method
+                </span>
                 <label for = "pickup">Pick Up</label>
                 <input type = "radio" id = "pickup" name = "method" checked>
                 <label for = "delivery">Delivery</label>
@@ -45,7 +62,10 @@
     
             <fieldset>
                 <legend>Select Size of Pizza</legend>
-                <select>
+                    <span class="err" id = "err-size">
+                    Please select a size </span>
+                <select id = "size">
+                    <option value="none">Please select a size</option>
                     <option value="small">Small</option>
                     <option value="medium">Medium</option>
                     <option value="large">Large</option>

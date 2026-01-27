@@ -33,7 +33,7 @@ header {
 header img {
     
     height: auto;
-    border-radius: 10px;
+    border-radius: 150px;
     float: right;
     margin: 0 auto 1rem auto;
     width: 120px;
@@ -67,4 +67,9 @@ input[type = "text"] {
     margin-bottom: 1.5rem;
     padding: .75rem;
 
+}
+
+.err {
+    color: darkred;
+    display: none;
 }
