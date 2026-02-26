@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/yousifsultan2006-web/Pizza#readme",
   "dependencies": {
+    "ejs": "^4.0.1",
     "express": "^5.2.1"
   },
   "devDependencies": {

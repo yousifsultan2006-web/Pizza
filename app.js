@@ -9,6 +9,10 @@ const PORT = 3000;
 //serve static files from the "public" directory
 app.use(express.static('public'));
 
+//set EJS as the view engine
+app.set('view engine', 'ejs');
+
+
 app.use(express.urlencoded({extended: true}));//form data and store it in req.body
 
 //create temp order array
@@ -19,19 +23,19 @@ const orders = [];
 
 //define our main or default route ("/")
 app.get('/', (req, res) => {
-    res.sendFile(`${import.meta.dirname}/views/home.html`);
+    res.render('home');
 });
 //contact route
 app.get(`/contact`, (req, res) => {
-    res.sendFile(`${import.meta.dirname}/views/Contact.html`);
+    res.render('contact');
 });
 //confirmation route
 app.get(`/thank-you`, (req, res) => {
-    res.sendFile(`${import.meta.dirname}/views/confirmation.html`);
+    res.render('confirmation');
 });
 //admin route
 app.get(`/admin`, (req,res) => {
-    res.send(orders);
+    res.render('admin' , {orders});
 });
 //submit order route
 app.post(`/submit-order`, (req, res) => {
@@ -43,17 +47,17 @@ app.post(`/submit-order`, (req, res) => {
     email: req.body.email,
     method: req.body.method,
     size: req.body.size,
-    topping: req.body.topping ? req.body.toppings : "none",
-    discounts: req.body.discounts,
+    topping: req.body.topping ? req.body.topping : "none",
+    // discounts: req.body.discounts,
     comment: req.body.comment,
-    placeOrderButton: req.body.placeOrderButton,
+    // placeOrderButton: req.body.placeOrderButton,
     timestamp: new Date()
 };
 
 //add order object to orders array
 orders.push(order);
 
-res.sendFile(`${import.meta.dirname}/views/confirmation.html`)
+res.render('confirmation', {order});
 });
 
 app.listen(PORT, () => {

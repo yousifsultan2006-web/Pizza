@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    
+    <!--script section-->
+    <script src = "https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src = "https://cdn.datatables.net/2.3.7/js/dataTables.js"></script>
+    
+    <!-- styles section-->
+    <link rel = "stylesheet" href = "https://cdn.datatables.net/2.3.7/css/dataTables.dataTables.css">
+
+</head>
+<body
+    <h1> Order Summary </h1>
+   <table id = "order-table" class = "display">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Method</th>
+            <th>Size</th>
+            <th>Toppings</th>
+            <th>Discounts</th>
+            <th>Comment</th>
+        </tr>
+    </thead>
+        <p>order</p>
+         <% orders.forEach(order => { %>
+        <tr>
+            <td><%= order.fname %></td>
+            <td><%= order.lname %></td>
+            <td><%= order.email %></td>
+            <td><%= order.method %></td>
+            <td><%= order.size %></td>
+            <td><%= Array.isArray(order.topping) ? order.topping.join(", ") : "none" %></td>
+            <td><%= order.discounts %></td>
+            <td><%= order.comment %></td>
+        </tr>
+        <!--<p><%= order.fname %> <%= order.lname %> - <%= order.email %></p> !-->
+    <% }) %>
+  </table>
+<script defer>
+        let table = new DataTable("#order-table");
+    </script>
+</body>
+</html>

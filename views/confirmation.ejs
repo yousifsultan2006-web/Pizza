@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation</title>
+</head>
+<body>
+    <h1>Order Confirmed, <%= order.fname %> </h1>
+    <a href = "/">Place Order Here</a>
+    <h2>Order Details:</h2>
+    <p>Name: <%= order.fname %> <%= order.lname %></p>
+    <p>Email: <%= order.email %></p>
+    <p>Method: <%= order.method %></p>
+    <p>Size: <%= order.size %></p>
+    <p>Toppings: 
+        <% if (Array.isArray(order.topping)) { %>
+            <%= order.topping.join(", ") %>
+            <% } else { %>
+               no toppings %>
+        <% } %>
+    <p>Discounts: <%= order.discounts %></p>
+    <p>Comment: <%= order.comment %></p>
+</body>
+</html>
+
+<!--
+const order = {
+    fname: req.body.fname,
+    lname: req.body.lname,
+    email: req.body.email,
+    method: req.body.method,
+    size: req.body.size,
+    topping: req.body.topping ? req.body.toppings : "none",
+    discounts: req.body.discounts,
+    comment: req.body.comment,
+    placeOrderButton: req.body.placeOrderButton,
+    timestamp: new Date()
+};
+-->
