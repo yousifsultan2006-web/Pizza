@@ -1,9 +1,34 @@
 //import the express module
 import express from 'express';
 
+//import the mysql module
+import mysql from 'mysql2';
+//import the env module
+import dotenv from 'dotenv';
+
+dotenv.config();
+console.log(process.env.DB_HOST);
 //create an express application
 const app = express();
 
+//create a connection pool to the MySQL database
+const pool = mysql.createPool({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT
+}).promise();
+
+//test the database connection
+app.get('/db-test', async (req, res) => {
+    try {
+        const pizza_orders = await pool.query("SELECT * FROM orders");
+        res.send(pizza_orders[0]);
+    } catch (error) {
+        console.error('Database connection failed:', err);
+    }
+});
 //define a port number
 const PORT = 3000;
 //serve static files from the "public" directory
