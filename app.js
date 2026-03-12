@@ -59,28 +59,41 @@ app.get(`/thank-you`, (req, res) => {
     res.render('confirmation');
 });
 //admin route
-app.get(`/admin`, (req,res) => {
-    res.render('admin' , {orders});
+app.get(`/admin`, async(req,res) => {
+    
+
+    //read the orders from the database
+    //newest first
+    let sql = "SELECT * FROM orders ORDER BY timestamp DESC";
+    const orders = await pool.query(sql)
+    console.log(orders);
+    res.render('admin', { orders: orders[0] });
 });
 //submit order route
-app.post(`/submit-order`, (req, res) => {
+app.post(`/submit-order`, async (req, res) => {
+    const order = req.body;
     
-//Create a JSON object to store the order data
-    const order = {
-    fname: req.body.fname,
-    lname: req.body.lname,
-    email: req.body.email,
-    method: req.body.method,
-    size: req.body.size,
-    topping: req.body.topping ? req.body.topping : "none",
+//Create an array of order data
+    const params = [
+    order.fname,
+    order.lname,
+    order.email,
+    order.size,
+    order.method, 
+    Array.isArray(order.topping) ? order.topping.join(", ") : "none",
     // discounts: req.body.discounts,
-    comment: req.body.comment,
+     //req.body.comment,
     // placeOrderButton: req.body.placeOrderButton,
-    timestamp: new Date()
-};
+    ];
+
+    //insert new order into the database
+    const sql = `INSERT INTO orders (fname, lname, email, size, method, topping)
+     VALUES (?, ?, ?, ?, ?, ?)`;
+
+    const result = await pool.execute(sql, params)
+    console.log("order inserted with ID: ", result[0].insertId)
 
 //add order object to orders array
-orders.push(order);
 
 res.render('confirmation', {order});
 });
